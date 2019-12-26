@@ -6,10 +6,11 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(
+@CucumberOptions(plugin = { "io.qameta.allure.cucumber3jvm.AllureCucumber3Jvm", "pretty", "json:target/cucumber-report/report.json" },
+
 features = "src/test/resources/features/LoginLogout.feature"
-,glue= {"com.amegybank.steps"},
-tags = {"@smoke"}
+,glue= {"com.amegybank.steps"}
+//tags = {"@smoke"}
 )
 
 public class CucumberTest {

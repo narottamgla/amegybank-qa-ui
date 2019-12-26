@@ -1,6 +1,7 @@
 package com.amegybank.steps;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -24,6 +25,8 @@ public class LoginLogoutSteps {
 	public void User_open_amegybank_page_urlin_browser() throws Throwable {
 		System.setProperty("webdriver.chrome.driver", "lib/chromedriver.exe");
 		driver = new ChromeDriver();
+		driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.get("https://www.amegybank.com/");
 	}
 
@@ -72,6 +75,7 @@ public class LoginLogoutSteps {
 	}
 	@Then("User quite the browser tab$")
 	public void User_quit_the_browser() throws Throwable {
+		driver.close();
 		driver.quit();
 	}
 }
